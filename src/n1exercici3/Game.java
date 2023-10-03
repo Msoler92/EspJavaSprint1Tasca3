@@ -7,16 +7,22 @@ public class Game {
     private String username;
     private HashMap<String, String> countries;
 
+    private int score;
+
     public Game (String username, HashMap<String, String> countries) {
         this.username = username;
         this.countries = countries;
+        score = 0;
     }
     public String getUsername () {
         return username;
     }
 
-    public int play() {
-        int score = 0;
+    public int getScore() {
+        return score;
+    }
+
+    public void play() {
         int length = countries.size();
         String countryToGuess;
         ArrayList<String> keys = new ArrayList<>(countries.keySet());
@@ -31,6 +37,5 @@ public class Game {
             countries.remove(countryToGuess);
             keys.remove(countryToGuess);
         }
-        return score;
     }
 }
