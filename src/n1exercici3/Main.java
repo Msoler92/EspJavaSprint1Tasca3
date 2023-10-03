@@ -12,11 +12,13 @@ public class Main {
         partida.play();
         try {
             File classificacio = new File("src/n1exercici3/classificacio.txt");
-            classificacio.createNewFile();
-            FileWriter writer = new FileWriter ("src/n1exercici3/classificacio.txt", true);
-            writer.write("Usuari/ària: " + partida.getUsername() + ". Puntuació: " + partida.getScore() + ".\n");
-            writer.close();
-
+            if (classificacio.createNewFile()) {
+                FileWriter writer = new FileWriter("src/n1exercici3/classificacio.txt", true);
+                writer.write("Usuari/ària: " + partida.getUsername() + ". Puntuació: " + partida.getScore() + ".\n");
+                writer.close();
+            } else {
+                System.out.println("Could not create file.");
+            }
         } catch (IOException e) {
             System.out.println("Unhandled IOException.");
         }
