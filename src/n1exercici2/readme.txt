@@ -1,4 +1,4 @@
-Sprint 1, Tasca 3, Nivell 2, Exercici 1
+Sprint 1, Tasca 3, Nivell 1, Exercici 2
 
 Crea i emplena un List<Integer>.
 
