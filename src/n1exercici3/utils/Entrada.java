@@ -1,4 +1,4 @@
-package n1exercici3;
+package n1exercici3.utils;
 import java.util.Scanner;
 import java.util.InputMismatchException;
 
@@ -14,7 +14,7 @@ public class Entrada {
                 acceptedInput = true;
             } catch (InputMismatchException e) {
                 System.out.println("Error de format");
-                sc.nextLine(); //Millor solució per evitar bucle infinit?
+                sc.nextLine();
             }
         } while (!acceptedInput);
         return input;

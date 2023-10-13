@@ -15,10 +15,12 @@ public class Main {
         System.out.println("Segona llista:");
         ArrayList<Integer> secondList = new ArrayList<>();
         ListIterator<Integer> it = integerList.listIterator(integerList.size());
-        int n;
         while (it.hasPrevious()) {
-            n = it.previous();
-            secondList.add(n);
+            secondList.add(it.previous());
+        }
+
+        //Mostrem la llista per pantalla
+        for (Integer n: secondList) {
             System.out.print(n + " ");
         }
         System.out.println();

@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Month> monthList = new ArrayList<Month>();
+        ArrayList<Month> monthList = new ArrayList<>();
         System.out.println("Inicialitzant llista.");
         monthList.add(new Month("Gener"));
         monthList.add(new Month("Febrer"));
@@ -28,7 +28,7 @@ public class Main {
 
         System.out.println("Eliminem el mes 'Agost'. Transformem l'ArrayList en HashSet.");
         monthList.remove(7);
-        HashSet<Month> monthSet = new HashSet<Month>(monthList);
+        HashSet<Month> monthSet = new HashSet<>(monthList);
         for (Month month: monthSet) {System.out.print(month.toString() + " ");}
         System.out.println();
 

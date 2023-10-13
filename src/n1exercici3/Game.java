@@ -1,5 +1,7 @@
 package n1exercici3;
 
+import n1exercici3.utils.Entrada;
+
 import java.util.HashMap;
 import java.util.ArrayList;
 
