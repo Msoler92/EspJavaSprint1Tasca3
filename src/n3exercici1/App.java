@@ -6,12 +6,12 @@ import n3exercici1.comparators.SurnamesComparator;
 import n3exercici1.utils.Entrada;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.ListIterator;
+import java.util.Comparator;
+import java.util.TreeSet;
 
 public class App {
     public static void main (String[] args) {
-        ArrayList<Person> personList;
+        TreeSet<Person> personSet;
         int input = mainMenu();
         NameComparator nc = new NameComparator();
         SurnamesComparator sc = new SurnamesComparator();
@@ -24,34 +24,28 @@ public class App {
                             Entrada.llegirString("DNI:"));
                     break;
                 case 2:
-                    personList = loadCsv();
-                    personList.sort(nc);
-                    printList(personList);
+                    personSet = loadCsv(nc);
+                    printSet(personSet);
                     break;
                 case 3:
-                    personList = loadCsv();
-                    personList.sort(nc);
-                    printList(reverseList(personList));
+                    personSet = loadCsv(nc);
+                    printSet((TreeSet<Person>) personSet.descendingSet());
                     break;
                 case 4:
-                    personList = loadCsv();
-                    personList.sort(sc);
-                    printList(personList);
+                    personSet = loadCsv(sc);
+                    printSet(personSet);
                     break;
                 case 5:
-                    personList = loadCsv();
-                    personList.sort(sc);
-                    printList(reverseList(personList));
+                    personSet = loadCsv(sc);
+                    printSet((TreeSet<Person>) personSet.descendingSet());
                     break;
                 case 6:
-                    personList = loadCsv();
-                    personList.sort(dc);
-                    printList(personList);
+                    personSet = loadCsv(dc);
+                    printSet(personSet);
                     break;
                 case 7:
-                    personList = loadCsv();
-                    personList.sort(dc);
-                    printList(reverseList(personList));
+                    personSet = loadCsv(dc);
+                    printSet((TreeSet<Person>) personSet.descendingSet());
                     break;
                 default:
                     System.out.println("Instrucció no reconeguda.");
@@ -75,15 +69,15 @@ public class App {
 
         return Entrada.llegirByte("Introdueixi el nombre corresponent a l'acció a realitzar:");
     }
-    static ArrayList<Person> loadCsv() {
-        ArrayList<Person> personList = new ArrayList<>();
+    static TreeSet<Person> loadCsv(Comparator<Person> c) {
+        TreeSet<Person> personSet = new TreeSet<>(c);
         try (BufferedReader br = new BufferedReader(new FileReader("src\\n3exercici1\\resources\\LlistatPersones.csv"))) {
             String line;
             int lineCounter = 1;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
                 if (values.length == 3) {
-                    personList.add(new Person(values[0], values[1], values[2]));
+                    personSet.add(new Person(values[0], values[1], values[2]));
                 } else {
                     System.err.println("Could not read line " + lineCounter);
                 }
@@ -93,7 +87,7 @@ public class App {
             System.err.println("Could not find file.");
             e.printStackTrace();
         }
-        return personList;
+        return personSet;
     }
     static void printToCsv(String line) {
         try {
@@ -111,6 +105,7 @@ public class App {
             e.printStackTrace();
         }
     }
+    /*
     static ArrayList<Person> reverseList(ArrayList<Person> list) {
         ArrayList<Person> reverseList = new ArrayList<>();
         ListIterator<Person> it = list.listIterator(list.size());
@@ -119,9 +114,10 @@ public class App {
         }
         return reverseList;
     }
-    static void printList(ArrayList<Person> list) {
+     */
+    static void printSet(TreeSet<Person> set) {
         System.out.println(String.format("%-20s", "NOM") + String.format("%-25s", "COGNOMS") + "DNI");
-        for (Person p: list) {
+        for (Person p: set) {
             System.out.println(p);
         }
     }
